@@ -1,4 +1,4 @@
-package main.java.com.yrkim.objects;
+package main.java.com.yrkim.objects.chapter01;
 
 import java.time.LocalDateTime;
 

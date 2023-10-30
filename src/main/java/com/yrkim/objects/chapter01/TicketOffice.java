@@ -1,4 +1,4 @@
-package main.java.com.yrkim.objects;
+package main.java.com.yrkim.objects.chapter01;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,12 +8,16 @@ public class TicketOffice {
     private Long amount;
     private List<Ticket> tickets = new ArrayList<>();
 
+    public void sellTicketTo(Audience audience) {
+        plusAmount(audience.buy(getTicket()));
+    }
+
     public TicketOffice(Long amount, Ticket ... tickets) {
         this.amount = amount;
         this.tickets.addAll(Arrays.asList(tickets));
     }
 
-    public Ticket getTicket() {
+    private Ticket getTicket() {
         return tickets.remove(0);
     }
 
@@ -21,7 +25,7 @@ public class TicketOffice {
         this.amount -= amount;
     }
 
-    public void plusAmount(Long amount) {
+    private void plusAmount(Long amount) {
         this.amount += amount;
     }
 }

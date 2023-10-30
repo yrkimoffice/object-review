@@ -1,9 +1,20 @@
-package main.java.com.yrkim.objects;
+package main.java.com.yrkim.objects.chapter01;
 
 public class Bag {
     private Long amount;
     private Invitation invitation;
     private Ticket ticket;
+
+    public Long hold(Ticket ticket) {
+        if (hasInvitation()) {
+            setTicket(ticket);
+            return 0L;
+        } else {
+            setTicket(ticket);
+            minusAmount(ticket.getFee());
+            return ticket.getFee();
+        }
+    }
 
     public Bag(Long amount) {
         this.amount = amount;
@@ -15,7 +26,7 @@ public class Bag {
     }
 
     //초대장 보유여부
-    public boolean hasInvitation() {
+    private boolean hasInvitation() {
         return invitation != null;
     }
 
@@ -24,11 +35,11 @@ public class Bag {
         return ticket != null;
     }
 
-    public void setTicket(Ticket ticket) {
+    private void setTicket(Ticket ticket) {
         this.ticket = ticket;
     }
 
-    public void minusAmount(Long amount) {
+    private void minusAmount(Long amount) {
         this.amount -= amount;
     }
 
