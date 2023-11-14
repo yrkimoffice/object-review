@@ -1,5 +1,7 @@
 package main.java.com.yrkim.objects.chapter04;
 
+import main.java.com.yrkim.objects.chapter02.Money;
+
 import java.time.LocalDateTime;
 
 public class Screening {
@@ -29,5 +31,24 @@ public class Screening {
 
     public void setWhenScreened(LocalDateTime whenScreened) {
         this.whenScreened = whenScreened;
+    }
+
+    public Money calculateFee(int audienceCount) {
+        switch (movie.getMovieType()) {
+            case AMOUNT_DISCOUNT -> {
+                if (movie.isDiscountable(whenScreened, sequence)) {
+                    return movie.calculateAmountDiscountFee().times(audienceCount);
+                }
+            }
+            case PERCENT_DISCOUNT -> {
+                if (getMovie().isDiscountable(whenScreened, sequence)) {
+                    return movie.calculateAmountDiscountFee().times(audienceCount);
+                }
+            }
+            case NONE_DISCOUNT -> {
+                return movie.calculateNoneDiscountFee().times(audienceCount);
+            }
+        }
+        return movie.calculatePercentDiscountFee().times(audienceCount);
     }
 }

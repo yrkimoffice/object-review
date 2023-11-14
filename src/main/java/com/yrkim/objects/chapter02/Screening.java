@@ -1,5 +1,7 @@
 package main.java.com.yrkim.objects.chapter02;
 
+import main.java.com.yrkim.objects.chapter04.Customer;
+
 import java.time.LocalDateTime;
 
 public class Screening {
